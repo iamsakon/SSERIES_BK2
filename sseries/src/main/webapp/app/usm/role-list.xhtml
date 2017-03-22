@@ -1,0 +1,21 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:p="http://primefaces.org/ui">
+	<h:form id="RoleListForm">
+		<p:growl id="growl" life="10000" />
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+		<p:dataTable var="role" value="#{roleController.lazyData}" paginator="true" rows="10" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{roleController.selectedRoleDTO}" id="RoleTable" lazy="true">
+			<p:ajax event="rowSelect" listener="#{roleController.onRowSelect}"/>
+			<p:column headerText="name">
+				<h:outputText value="#{role.name}" />
+			</p:column>
+			<p:column style="width:32px;text-align: center">
+				<p:commandButton update=":centerContentPanel" actionListener="#{roleController.viewAction}" styleClass="ui-priority-primary" icon="ui-icon-search" title="View"> <f:setPropertyActionListener value="#{Role}" target="#{roleController.selectedRoleDTO}" />
+					</p:commandButton>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</ui:composition>

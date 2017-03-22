@@ -1,0 +1,21 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:p="http://primefaces.org/ui">
+	<h:form id="BusinessPartnerGroupViewForm">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<p:panel header=" Business Partner Group">
+			<p:growl id="growl" life="10000" />
+			<h:panelGrid columns="2" columnClasses="label, value">
+	
+				<p:outputLabel value="Name:"/>
+				<p:outputLabel value="#{businessPartnerGroupController.selectedBusinessPartnerGroupDTO.name}"/>
+				<p:outputLabel value="Description:"/>
+				<p:outputLabel value="#{businessPartnerGroupController.selectedBusinessPartnerGroupDTO.description}"/>
+				<p:outputLabel value="Default Group: " />
+				<p:selectBooleanCheckbox value="#{businessPartnerGroupController.selectedBusinessPartnerGroupDTO.defaultGroup}" disabled="true"/>
+			</h:panelGrid>
+		</p:panel>
+	</h:form>
+</ui:composition>

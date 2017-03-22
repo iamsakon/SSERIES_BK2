@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:p="http://primefaces.org/ui">
+ 	<div class="ui-fluid">
+	<h:form id="BusinessPartnerGroupCriteriaForm">
+		<p:growl id="growl" life="10000" />
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+		<p:panel header=" Business Partner Group" toggleable="true" toggleSpeed="500" closeSpeed="500" >
+			<p:panelGrid columns="3" columnClasses="ui-grid-col-3,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
+	
+				<p:outputLabel value="Name:" for="name"/>
+				<p:inputText id="name" value="#{businessPartnerGroupController.criteriaBusinessPartnerGroupDTO.name}"/>
+				<p:message for="name" />
+				
+				<p:outputLabel value="Description:" for="description"/>
+				<p:inputText id="description" value="#{businessPartnerGroupController.criteriaBusinessPartnerGroupDTO.description}"/>
+				<p:message for="description" />
+				
+				<p:outputLabel value="Default Group:" for="defaultGroup" />
+				<p:selectOneRadio id="defaultGroup" value="#{businessPartnerGroupController.criteriaBusinessPartnerGroupDTO.defaultGroup}"> 
+					<f:selectItem itemLabel="ALL" itemValue="#{null}" /> 
+					<f:selectItem itemLabel="Yes" itemValue="#{true}" />
+					<f:selectItem itemLabel="No" itemValue="#{false}" />  
+				</p:selectOneRadio>
+				<p:message for="defaultGroup" />
+				
+			</p:panelGrid>
+			<div align="center">
+				<p:commandButton value="Search" id="searchButton" update=":centerContentPanel" actionListener="#{businessPartnerGroupController.searchAction}" styleClass="ui-priority-primary" style="width: 20%" icon="ui-icon-disk" />
+				<p:commandButton value="Reset" id="resetButton" update=":centerContentPanel" actionListener="#{businessPartnerGroupController.resetAction}" styleClass="ui-priority-primary" style="width: 20%" icon="ui-icon-disk" />
+			</div>
+		</p:panel>
+	</h:form>
+		<br/>
+	<h:form id="BusinessPartnerGroupListForm">
+		<p:growl id="growl" life="10000" />
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+		<p:dataTable var="businessPartnerGroup" value="#{businessPartnerGroupController.lazyData}" paginator="true" rows="10" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{businessPartnerGroupController.selectedBusinessPartnerGroupDTO}" id="BusinessPartnerGroupTable" lazy="true">
+			<p:ajax event="rowSelect" listener="#{businessPartnerGroupController.onRowSelect}"/>
+	
+			<p:column headerText="Name">
+				<h:outputText value="#{businessPartnerGroup.name}" />
+			</p:column>
+			<p:column headerText="Description">
+				<h:outputText value="#{businessPartnerGroup.description}" />
+			</p:column>
+			<p:column headerText="Default Group">
+				<p:selectBooleanCheckbox value="#{businessPartnerGroup.defaultGroup}" disabled="true"/>
+			</p:column>
+			<p:column style="width:32px;text-align: center">
+				<p:commandButton update=":centerContentPanel" actionListener="#{businessPartnerGroupController.viewAction}" styleClass="ui-priority-primary" icon="ui-icon-search" title="View"/>
+				<p:commandButton update=":centerContentPanel" actionListener="#{businessPartnerGroupController.deleteAction}" styleClass="ui-priority-primary" icon="ui-icon-search" title="Delete">
+					<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+				</p:commandButton>	
+			</p:column>
+		</p:dataTable>
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+        	<p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        	<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </p:confirmDialog>
+	</h:form>
+	</div>
+</ui:composition>

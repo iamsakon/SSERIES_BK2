@@ -1,0 +1,42 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form id="UserAccountModifyForm">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+		<p:panel header="UserAccount">
+			<p:growl id="growl" life="10000" />
+			<h:panelGrid columns="2" columnClasses="label, value">
+
+				<p:outputLabel value="username:" />
+				<p:outputLabel
+					value="#{userAccountController.mainUserAccountDTO.username}" />
+				<p:outputLabel value="enabled: " />
+				<p:selectBooleanCheckbox
+					value="#{userAccountController.mainUserAccountDTO.enabled}"
+					disabled="true" />
+				<p:outputLabel value="Valid Start :" />
+				<p:calendar
+					value="#{userAccountController.mainUserAccountDTO.validStart}"
+					pattern="dd/MM/yyyy">
+				</p:calendar>
+				<p:outputLabel value="Valid End" />
+				<p:calendar
+					value="#{userAccountController.mainUserAccountDTO.validEnd}"
+					pattern="dd/MM/yyyy">
+				</p:calendar>
+				<p:commandButton value="Save" id="ajax" update=":centerContentPanel"
+					disabled="#{userAccountController.disabledSaveEvent}"
+					actionListener="#{userAccountController.saveAction}"
+					styleClass="ui-priority-primary" icon="ui-icon-disk" />
+				<p:commandButton value="Save-Continue" id="ajax2" update="growl"
+					disabled="#{userAccountController.disabledSaveEvent}"
+					actionListener="#{userAccountController.saveAction2}"
+					styleClass="ui-priority-primary" icon="ui-icon-disk" />
+			</h:panelGrid>
+		</p:panel>
+	</h:form>
+</ui:composition>

@@ -1,0 +1,35 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:p="http://primefaces.org/ui">
+	<h:form id="PrivilegeListForm">
+		<p:growl id="growl" life="10000" />
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+		<p:dataTable var="privilege" value="#{privilegeController.lazyData}" paginator="true" rows="10" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{privilegeController.selectedPrivilegeDTO}" id="PrivilegeTable" lazy="true">
+	
+			<p:ajax event="rowSelect" listener="#{userAccountController.onRowSelect}"/>
+	
+			<p:column headerText="delete_flag">
+				<h:outputText value="#{privilege.deleteFlag}" />
+			</p:column>
+			<p:column headerText="active_flag">
+				<h:outputText value="#{privilege.activeFlag}" />
+			</p:column>
+			<p:column headerText="code">
+				<h:outputText value="#{privilege.code}" />
+			</p:column>
+			<p:column headerText="name">
+				<h:outputText value="#{privilege.name}" />
+			</p:column>
+			<p:column headerText="description">
+				<h:outputText value="#{privilege.description}" />
+			</p:column>
+			<p:column style="width:32px;text-align: center">
+				<p:commandButton update=":centerContentPanel" actionListener="#{privilegeController.viewAction}" styleClass="ui-priority-primary" icon="ui-icon-search" title="View">
+					</p:commandButton>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</ui:composition>

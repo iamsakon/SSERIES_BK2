@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form>
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+		<p:growl id="growl" life="10000" />
+		<p:ribbon>
+			<p:tab title="User Account">
+				<p:ribbonGroup label="New">
+					<p:commandButton value="New" icon="ui-ribbonicon-new" update=":centerContentPanel" 
+						styleClass="ui-ribbon-bigbutton" disabled="#{userAccountController.disabledNewEvent}" actionListener="#{userAccountController.newAction}" />
+					<p:commandButton value="Save" icon="ui-ribbonicon-save"  update=":centerContentPanel" 
+						styleClass="ui-ribbon-bigbutton" disabled="#{userAccountController.disabledSaveEvent}" actionListener="#{userAccountController.saveAction}"/>
+				</p:ribbonGroup>
+				<p:ribbonGroup label = "Find">
+					<p:commandButton value="Finding" icon="ui-ribbonicon-find" update=":centerContentPanel" 
+						styleClass="ui-ribbon-bigbutton" disabled="#{userAccountController.disabledFindEvent}" actionListener="#{userAccountController.findAction}" />
+					<p:commandButton value="View" icon="ui-ribbonicon-find" update=":centerContentPanel" 
+						styleClass="ui-ribbon-bigbutton" disabled="#{userAccountController.disabledFindEvent}" actionListener="#{userAccountController.viewAction}" />
+				</p:ribbonGroup>
+				<p:ribbonGroup label="Editing">
+					<p:commandButton value="Modify" icon="ui-ribbonicon-save"  update=":centerContentPanel" 
+						styleClass="ui-ribbon-bigbutton" disabled="#{userAccountController.disabledEditEvent}" actionListener="#{userAccountController.editAction}"/>
+				</p:ribbonGroup>
+				<p:ribbonGroup label="Export">
+				</p:ribbonGroup>
+			</p:tab>
+		</p:ribbon>
+	</h:form>
+	<br/>
+	<ui:include src="/#{userAccountController.currentSubView}.xhtml" />
+</ui:composition>

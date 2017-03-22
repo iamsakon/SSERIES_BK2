@@ -1,0 +1,31 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:p="http://primefaces.org/ui">
+	<h:form id="UserAccountViewForm">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<p:panel header="UserAccount">
+			<p:growl id="growl" life="10000" />
+			<h:panelGrid columns="2" columnClasses="label, value">
+	
+				<p:outputLabel value="username:"/>
+				<p:outputLabel value="#{userAccountController.selectedUserAccountDTO.username}"/>
+				<p:outputLabel value="enabled: " />
+				<p:selectBooleanCheckbox
+					value="#{userAccountController.selectedUserAccountDTO.enabled}" disabled="true"/>
+				<p:outputLabel value="Valid Start :" />
+				<p:calendar
+					value="#{userAccountController.selectedUserAccountDTO.validStart}"
+					pattern="dd/MM/yyyy" disabled = "true">
+				</p:calendar>
+				<p:outputLabel value="Valid End" />
+				<p:calendar
+					value="#{userAccountController.selectedUserAccountDTO.validEnd}"
+					pattern="dd/MM/yyyy" disabled = "true">
+				</p:calendar>
+			</h:panelGrid>
+		</p:panel>
+	</h:form>
+</ui:composition>

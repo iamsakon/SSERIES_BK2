@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form id="form">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+
+		<p:panel header="Product">
+			<p:growl id="growl" life="10000" />
+			<h:panelGrid columns="2" columnClasses="label, value">
+				<h:outputText value="Product Type:"/>
+				<p:outputLabel value = "#{productController.selectedProductMaster.productType.name}"/>
+				<h:outputText value="Code: "  />
+				<p:outputLabel id="code" value="#{productController.selectedProductMaster.code}"/>
+				<h:outputText value="Name: " />
+				<p:outputLabel id="name" value="#{productController.selectedProductMaster.name}" />
+				<h:outputText value="Short Description: " />
+				<p:outputLabel id="shortDescription" value="#{productController.selectedProductMaster.shortDescription}" />
+				<h:outputText value="Unit: " />
+				<p:outputLabel value="#{productController.selectedProductMaster.uom.name}"/>
+				<h:outputText value="Description: " />
+				<p:inputTextarea value="#{productController.selectedProductMaster.fullDescription}" disabled="true"/>
+			</h:panelGrid>
+		</p:panel>
+
+
+	</h:form>
+</ui:composition>

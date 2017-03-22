@@ -1,0 +1,95 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="head">
+        <style type="text/css">
+            .value {
+                font-weight: bold;
+            }
+            
+            .ui-datatable {
+                margin-bottom: 25px
+            }
+            
+            .ui-datatable .ui-datatable-footer {
+                text-align:left;
+            }
+            
+            .ui-datalist ul {
+                padding: 0 0 0 10px;
+                margin: 5px 0;
+            }
+            
+            .ui-datatable .ui-button-icon-only .ui-button-text {
+                padding: 0;
+                line-height: 1.2;
+            }
+        </style>
+	</ui:define>
+	
+	<h:form id="criteriaform">
+		<p:growl id="criteriaGrowl" life="10000" />
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+		<h:panelGrid columns="2" columnClasses="label, value">
+			<h:outputText value="Product Type:" />
+			<p:selectOneMenu id="criteriaProductType"
+				value="#{productController.criteria.productType}" required="false"
+				label="Product Type" hideNoSelectionOption="true"
+				converter="#{productTypeConverter}">
+				<f:selectItem itemLabel="" itemValue="#{null}"
+					noSelectionOption="true" />
+				<f:selectItems value="#{productController.productTypes}"
+					var="productType" itemLabel="#{productType.name}"
+					itemValue="#{productType}" />
+			</p:selectOneMenu>
+			<h:outputText value="Code: " />
+			<p:inputText id="code" value="#{productController.criteria.code}"
+				required="true" label="product code" />
+			<h:outputText value="Name: " />
+			<p:inputText id="name" value="#{productController.criteria.name}" />
+		</h:panelGrid>
+	</h:form>
+	<h:form id="form">
+		<p:growl id="growl" life="10000" />
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+		<p:dataTable id="products" var="product" rowIndexVar="rowIndex" lazy="true"
+			paginator="true" rows="10" rowsPerPageTemplate="5,10,15"
+			value="#{productController.lazyDataModelUtil}" rowKey="#{product.id}"
+			selectionMode="single" selection="#{productController.selectedProductMaster}">
+			
+			<p:ajax event="rowSelect" listener="#{productController.onRowSelect}" update=":centerContentPanel"/>
+			
+			<p:column headerText="No." width="5%">
+				<h:outputText value="#{rowIndex+1}" />
+			</p:column>
+			<p:columns value="#{productController.columns}" var="column"
+				columnIndexVar="colIndex">
+				<f:facet name="header">
+					<h:outputText value="#{column.header}" />
+				</f:facet>
+				<!-- 				<h:outputText value= "#{column.property}"/> -->
+				<h:outputText value="#{product[column.property]}" />
+			</p:columns>
+			<p:column headerText="Product Type">
+				<h:outputText value="#{product.productType.name}" />
+			</p:column>
+			<p:column headerText="Units">
+				<h:outputText value="#{product.uom.name}" />
+			</p:column>
+			<p:column style="width:32px;text-align: center">
+				<p:commandButton update=":centerContentPanel"
+					actionListener="#{productController.viewAction}"
+					styleClass="ui-priority-primary" icon="ui-icon-search" title="View5">
+ 					<f:setPropertyActionListener value="#{product}" 
+ 						target="#{productController.selectedProductMaster}" rowKey="#{product.id}"/>
+ 			</p:commandButton>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</ui:composition>
+

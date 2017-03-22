@@ -1,0 +1,19 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	
+	<h:form>
+		<p:panel id="basic" header="General Information" footer="Movie Details"
+			style="margin-bottom:20px">
+			<p:panelGrid columns="2" cellpadding="10">
+				<h:outputText value="Organization Name *" />
+				<p:inputText></p:inputText>
+			</p:panelGrid>
+		</p:panel>
+
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+	</h:form>
+</ui:composition>

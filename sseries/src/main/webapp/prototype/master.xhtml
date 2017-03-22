@@ -1,0 +1,24 @@
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form>
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+		<p:ribbon>
+			<p:tab title="File">
+				<p:ribbonGroup label="New">
+					<p:commandButton value="New" icon="ui-ribbonicon-new" update=":centerContentPanel" 
+						styleClass="ui-ribbon-bigbutton"  actionListener="#{masterView.newAction}" />
+					<p:commandButton value="Save" icon="ui-ribbonicon-save"
+						styleClass="ui-ribbon-bigbutton" type="button" disabled="false" />
+				</p:ribbonGroup>
+				<p:ribbonGroup label="Editing">
+				</p:ribbonGroup>
+			</p:tab>
+		</p:ribbon>
+	</h:form>
+</ui:composition>

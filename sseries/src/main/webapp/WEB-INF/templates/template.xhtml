@@ -1,0 +1,112 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/tags">
+<h:head>
+
+	<style type="text/css">
+	body {
+		background-color: #FFFFFF;
+	}
+
+.ui-ribbon .ui-colorpicker .ui-button {
+	height: 24px;
+}
+
+.ui-icon.ui-ribbonicon-new {
+	background-image: url("#{resource['demo/images/icon/new.png']}");
+}
+
+.ui-icon.ui-ribbonicon-save {
+	background-image: url("#{resource['demo/images/icon/save.png']}");
+}
+
+.ui-icon.ui-ribbonicon-paste {
+	background-image: url("#{resource['demo/images/icon/paste.png']}");
+}
+
+.ui-icon.ui-ribbonicon-cut {
+	background-image: url("#{resource['demo/images/icon/cut.png']}");
+}
+
+.ui-icon.ui-ribbonicon-find {
+	background-image: url("#{resource['demo/images/icon/paste.png']}");
+}
+
+.ui-icon.ui-ribbonicon-print {
+	background-image: url("#{resource['demo/images/icon/print.png']}");
+}
+
+.ui-icon.ui-ribbonicon-zoomin {
+	background-image: url("#{resource['demo/images/icon/zoomin.png']}");
+}
+
+.ui-icon.ui-ribbonicon-zoomout {
+	background-image: url("#{resource['demo/images/icon/zoomout.png']}");
+}
+</style>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport"
+			content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link rel="shortcut icon" type="image/png"
+			href="#{request.contextPath}/resources/main/images/favicon.png" />
+	</f:facet>
+
+	<title>PrimeFaces ShowCase</title>
+	<h:outputStylesheet name="main/css/showcase.css" />
+	<h:outputStylesheet name="main/css/perfect-scrollbar.css" />
+	<h:outputStylesheet name="main/css/sh.css" />
+	<h:outputScript name="jquery/jquery.js" library="primefaces" />
+	<h:outputScript name="jquery/jquery-plugins.js" library="primefaces" />
+	<h:outputScript name="main/js/perfect-scrollbar.js" />
+	<h:outputScript name="main/js/showcase.js" />
+	<ui:insert name="head" />
+</h:head>
+
+<!-- <p:ajaxStatus style="display:block;margin-bottom:2em;height:24px;"> -->
+<!--     <f:facet name="default"> -->
+<!--         <h:outputText value="Status: StandBy" /> -->
+<!--     </f:facet> -->
+ 
+<!--     <f:facet name="start"> -->
+<!--         <p:graphicImage name="/demo/images/ajaxloadingbar.gif" /> -->
+<!--     </f:facet> -->
+ 
+<!--     <f:facet name="complete"> -->
+<!--         <h:outputText value="Status: Completed" /> -->
+<!--     </f:facet> -->
+<!-- </p:ajaxStatus> -->
+ 
+<!-- <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" /> -->
+ 
+<p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+    <p:outputLabel value="Loading..."/>
+    <p:graphicImage name="/demo/images/ajaxloadingbar.gif" />
+</p:dialog>
+
+<p:layout style="min-width:800px;min-height:800px;">
+	<p:layoutUnit position="north" size="30"
+		header="#{principal.username} #{controlView.sessionId}"
+		resizable="true" closable="true" collapsible="true">
+		<sec:authentication property="principal.username" />
+		<br />
+		<a
+			href="#{facesContext.externalContext.requestContextPath}/j_spring_security_logout">logout</a>
+	</p:layoutUnit>
+	<p:layoutUnit position="west" resizable="true" size="500" minSize="80"
+		maxSize="300" header="Application " collapsible="true">
+		<ui:include src="menu.xhtml" />
+	</p:layoutUnit>
+
+	<p:layoutUnit position="center">
+		<h:panelGroup id="centerContentPanel">
+			<ui:include src="/#{controlView.currentView}.xhtml" />
+		</h:panelGroup>
+	</p:layoutUnit>
+</p:layout>
+</html>

@@ -1,0 +1,90 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form id="UserAccountCriteriaform">
+		<p:growl id="criteriaGrowl" life="10000" />
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+		<p:panel header="UserAccount">
+			<h:panelGrid columns="2" columnClasses="label, value">
+				<p:outputLabel value="username :" />
+				<p:inputText
+					value="#{userAccountController.criteriaUserAccountDTO.username}" />
+				<p:outputLabel value="Only Active :" />
+				<p:selectBooleanCheckbox
+					value="#{userAccountController.criteriaUserAccountDTO.enabled}" />
+				<p:outputLabel value="Valid Start :" />
+				<p:calendar 
+					value="#{userAccountController.criteriaUserAccountDTO.validStart}" pattern="dd/MM/yyyy">					
+				</p:calendar>
+				<p:outputLabel value="Valid End" />
+				<p:calendar
+					value="#{userAccountController.criteriaUserAccountDTO.validEnd}" pattern="dd/MM/yyyy">
+				</p:calendar>
+				
+			</h:panelGrid>
+			<div align="center">
+				<p:commandButton value="Search" id="searchButton"
+					update=":centerContentPanel"
+					actionListener="#{userAccountController.searchAction}"
+					styleClass="ui-priority-primary" icon="ui-icon-disk" />
+				<p:commandButton value="Reset" id="resetButton"
+					update=":centerContentPanel"
+					actionListener="#{userAccountController.resetAction}"
+					styleClass="ui-priority-primary" icon="ui-icon-disk" />
+			</div>
+		</p:panel>
+	</h:form>
+	<br />
+	<h:form id="UserAccountListForm">
+		<p:growl id="growl" life="10000" />
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+		<p:dataTable var="userAccount"
+			value="#{userAccountController.lazyData}" paginator="true" rows="10"
+			widgetVar="userAccountTable" rowIndexVar="rowIndex"
+			paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+			rowsPerPageTemplate="5,10,15" selectionMode="single"
+			selection="#{userAccountController.selectedUserAccountDTO}"
+			id="UserAccountTable" lazy="true">
+
+			<p:ajax event="rowSelect"
+				listener="#{userAccountController.onRowSelect}" />
+
+			<p:column headerText="No">
+				<h:outputText value="#{rowIndex+1}" />
+			</p:column>
+			<p:column headerText="username">
+				<h:outputText value="#{userAccount.username}" />
+			</p:column>
+			<p:column headerText="enabled">
+				<h:outputText value="#{userAccount.enabled}" />
+			</p:column>
+			<p:column headerText="valid start">
+				<h:outputText value="#{userAccount.validStart.time}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:outputText>
+			</p:column>
+			<p:column headerText="valid end">
+				<h:outputText value="#{userAccount.validEnd.time}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:outputText>
+			</p:column>
+			<p:column style="width:32px;text-align: center">
+			
+				<p:commandButton update=":centerContentPanel" onCompleted="#{userAccountController.viewAction}" icon="ui-icon-search" title="View">
+					<f:setPropertyActionListener value="#{userAccount}" target="#{userAccountController.selectedUserAccountDTO}" />
+				</p:commandButton>
+			
+				<p:commandButton update=":centerContentPanel"
+					actionListener="#{userAccountController.viewAction}"
+					styleClass="ui-priority-primary" icon="ui-icon-search" title="View">
+				</p:commandButton>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</ui:composition>

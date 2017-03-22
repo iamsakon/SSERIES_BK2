@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<h:form id="form">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+
+		<p:panel header="Product">
+			<p:growl id="growl" life="10000" />
+			<h:panelGrid columns="2" columnClasses="label, value">
+				<h:outputText value="Product Type *:"/>
+				<p:selectOneMenu id="productType" value="#{productController.productMaster.productType}" 
+					required="true" requiredMessage="Please select Product Type" label="Product Type" hideNoSelectionOption="true" converter="#{productTypeConverter}">
+					<f:selectItem  itemLabel="" itemValue="#{null}"  noSelectionOption="true" />
+					<f:selectItems value="#{productController.productTypes}" 
+					var="productType" itemLabel="#{productType.name}" itemValue="#{productType}"/>
+				</p:selectOneMenu>
+				<h:outputText value="Code *: "  />
+				<p:inputText id="code" value="#{productController.productMaster.code}" required="true" label="product code" />
+				<h:outputText value="Name: " />
+				<p:inputText id="name" value="#{productController.productMaster.name}" />
+				<h:outputText value="Short Description: " />
+				<p:inputText id="shortDescription" value="#{productController.productMaster.shortDescription}" />
+				<h:outputText value="Unit: " />
+				<p:selectOneMenu id="uom" value="#{productController.productMaster.uom}" converter="#{uomConverter}">
+					<f:selectItem itemLabel="" itemValue="" />
+					<f:selectItems value="#{productController.uoms}" var="uom" itemLabel="#{uom.name}" itemValue="#{uom}"/>
+				</p:selectOneMenu>
+				<h:outputText value="Description: " />
+				<p:inputTextarea value="#{productController.productMaster.fullDescription}"/>
+				<p:commandButton value="Save" id="ajax" update=":centerContentPanel" disabled="#{productController.disabledSaveEvent}"  
+					actionListener="#{productController.saveAction}" styleClass="ui-priority-primary" icon="ui-icon-disk"/>
+				<p:commandButton value="Save-Continue" id="ajax2" update="growl" disabled="#{productController.disabledSaveEvent}" 
+					actionListener="#{productController.saveAction2}" styleClass="ui-priority-primary" icon="ui-icon-disk"/>
+			</h:panelGrid>
+		</p:panel>
+
+
+	</h:form>
+</ui:composition>

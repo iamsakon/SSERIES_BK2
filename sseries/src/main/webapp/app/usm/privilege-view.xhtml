@@ -1,0 +1,26 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:p="http://primefaces.org/ui">
+	<h:form id="PrivilegeViewForm">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<p:panel header="Privilege">
+			<p:growl id="growl" life="10000" />
+			<h:panelGrid columns="2" columnClasses="label, value">
+	
+				<p:outputLabel value="deleteFlag:"/>
+				<p:outputLabel value="#{privilegeController.selectedPrivilegeDTO.deleteFlag}"/>
+				<p:outputLabel value="activeFlag:"/>
+				<p:outputLabel value="#{privilegeController.selectedPrivilegeDTO.activeFlag}"/>
+				<p:outputLabel value="code:"/>
+				<p:outputLabel value="#{privilegeController.selectedPrivilegeDTO.code}"/>
+				<p:outputLabel value="name:"/>
+				<p:outputLabel value="#{privilegeController.selectedPrivilegeDTO.name}"/>
+				<p:outputLabel value="description:"/>
+				<p:outputLabel value="#{privilegeController.selectedPrivilegeDTO.description}"/>
+			</h:panelGrid>
+		</p:panel>
+	</h:form>
+</ui:composition>
