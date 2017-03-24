@@ -4,11 +4,11 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/product-management"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/user-management"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/prototype"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/project-management"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/business-partner"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <property name="context-root" value="sseries"/>
         <property name="java-output-path" value="/sseries/target/classes"/>
     </wb-module>

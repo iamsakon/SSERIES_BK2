@@ -17,7 +17,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="src/product-management"/>
 	<classpathentry kind="src" path="src/user-management"/>
 	<classpathentry kind="src" path="src/prototype"/>
 	<classpathentry kind="src" path="src/project-management"/>
