@@ -19,11 +19,11 @@
 				<p:message for="description" />
 				
 				<p:outputLabel value="Default Group:" for="defaultGroup" />
-				<p:selectOneRadio id="defaultGroup" value="#{businessPartnerGroupController.criteriaBusinessPartnerGroupDTO.defaultGroup}"> 
-					<f:selectItem itemLabel="ALL" itemValue="#{null}" /> 
+				<p:selectOneButton id="defaultGroup" value="#{businessPartnerGroupController.criteriaBusinessPartnerGroupDTO.defaultGroup}"> 
+					<f:selectItem itemLabel="ALL" itemValue ="#{null}" /> 
 					<f:selectItem itemLabel="Yes" itemValue="#{true}" />
 					<f:selectItem itemLabel="No" itemValue="#{false}" />  
-				</p:selectOneRadio>
+				</p:selectOneButton>
 				<p:message for="defaultGroup" />
 				
 			</p:panelGrid>

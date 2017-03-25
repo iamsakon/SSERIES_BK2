@@ -23,7 +23,7 @@ public class AbstractBusinessPartnerGroupSpecification{
 				if(dto!=null){
 		
 					if(SpecificationsUtil.isNotEmpty(dto.getDefaultGroup())){
-						p1 = cb.and(cb.equal(root.get("default_group"),dto.getDefaultGroup()),p1);
+						p1 = cb.and(cb.equal(root.get("defaultGroup"),dto.getDefaultGroup()),p1);
 					}
 		
 					if(SpecificationsUtil.isNotEmpty(dto.getName())){
