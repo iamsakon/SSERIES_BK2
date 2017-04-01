@@ -49,8 +49,10 @@
 			<p:column headerText="Default Group">
 				<p:selectBooleanCheckbox value="#{businessPartnerGroup.defaultGroup}" disabled="true"/>
 			</p:column>
-			<p:column style="width:32px;text-align: center">
-				<p:commandButton update=":centerContentPanel" actionListener="#{businessPartnerGroupController.viewAction}" styleClass="ui-priority-primary" icon="ui-icon-search" title="View"/>
+			<p:column style="width:32px;text-align: center" headerText="View">
+				<p:commandButton update=":centerContentPanel" actionListener="#{businessPartnerGroupController.viewAction}" styleClass="ui-priority-primary" icon="ui-icon-search" title="View"/>				
+			</p:column>
+			<p:column style="width:32px;text-align: center" headerText="Delete">
 				<p:commandButton update=":centerContentPanel" actionListener="#{businessPartnerGroupController.deleteAction}" styleClass="ui-priority-primary" icon="ui-icon-search" title="Delete">
 					<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
 				</p:commandButton>	
@@ -59,7 +61,7 @@
 		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
         	<p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
         	<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-    </p:confirmDialog>
+    	</p:confirmDialog>
 	</h:form>
 	</div>
 </ui:composition>

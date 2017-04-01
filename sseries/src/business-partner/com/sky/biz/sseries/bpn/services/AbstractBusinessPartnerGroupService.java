@@ -1,18 +1,15 @@
 package com.sky.biz.sseries.bpn.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 import com.sky.biz.sseries.util.*;
 import com.sky.biz.sseries.services.ISSeriesServices;
-import com.sky.biz.sseries.bpn.util.*;
-import com.sky.biz.sseries.bpn.repositories.*;
 import com.sky.biz.sseries.bpn.dto.*;
 import com.sky.biz.sseries.bpn.entity.*;
 import com.sky.biz.sseries.bpn.specification.*;
 
 import java.util.*;
+@SuppressWarnings("rawtypes")
 public class AbstractBusinessPartnerGroupService extends BpnService implements ISSeriesServices{
 
 	@Override
@@ -23,7 +20,6 @@ public class AbstractBusinessPartnerGroupService extends BpnService implements I
 	}
 
 	@Override
-
 	public PageDTOUtil<BusinessPartnerGroupDTO> loadData(int first, int pageSize, Map criteriaMap){
 		List<BusinessPartnerGroupDTO> dtoList = new ArrayList<BusinessPartnerGroupDTO>();
 		Pageable pageRequest = SpringDataUtil.createPageRequest(first,pageSize);
@@ -34,9 +30,7 @@ public class AbstractBusinessPartnerGroupService extends BpnService implements I
 	}
 
 	@Override
-
 	@SuppressWarnings("unchecked")
-
 	public PageDTOUtil<BusinessPartnerGroupDTO> loadData(int first, int pageSize){
 
 		return this.loadData(first,pageSize,null);

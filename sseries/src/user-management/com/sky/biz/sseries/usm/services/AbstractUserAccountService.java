@@ -6,7 +6,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.sky.biz.sseries.util.*;
-import com.sky.biz.sseries.usm.util.*;
 import com.sky.biz.sseries.usm.repositories.*;
 import com.sky.biz.sseries.usm.services.UsmService;
 import com.sky.biz.sseries.usm.specification.UserAccountSpecifications;

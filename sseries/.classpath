@@ -19,7 +19,6 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src/user-management"/>
 	<classpathentry kind="src" path="src/prototype"/>
-	<classpathentry kind="src" path="src/project-management"/>
 	<classpathentry kind="src" path="src/business-partner"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
