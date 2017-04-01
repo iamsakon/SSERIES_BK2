@@ -15,7 +15,10 @@
 				<p:message for="name" />
 				<p:outputLabel value="Description:" for="description"/>
 				<p:inputText id="description" value="#{partnerCategoryController.mainPartnerCategoryDTO.description}"/>
-				<p:message for="description" />														
+				<p:message for="description" />	
+				<p:outputLabel value="Active: " for="isActive"/>
+				<p:selectBooleanCheckbox id="isActive" value="#{partnerCategoryController.mainPartnerCategoryDTO.isActive}"/>
+				<p:message for="isActive"/>													
 			</p:panelGrid>
 			<div align="center">
 				<p:commandButton value="Save" id="ajax" update=":centerContentPanel" disabled="#{partnerCategoryController.disabledSaveEvent}" actionListener="#{partnerCategoryController.saveAction}" styleClass="ui-priority-primary" style="width: 20%" icon="ui-icon-disk"/>

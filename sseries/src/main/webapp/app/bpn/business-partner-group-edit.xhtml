@@ -16,8 +16,12 @@
 				<p:outputLabel value="Description:" for="description"/>
 				<p:inputText id="description" value="#{businessPartnerGroupController.mainBusinessPartnerGroupDTO.description}"/>
 				<p:message for="description" />
-				<p:outputLabel value="Default Group: " for="defaultGroup"/><p:selectBooleanCheckbox id="defaultGroup" value="#{businessPartnerGroupController.mainBusinessPartnerGroupDTO.defaultGroup}"/>
-				<p:message for="defaultGroup"/>				
+				<p:outputLabel value="Default Group: " for="defaultGroup"/>
+				<p:selectBooleanCheckbox id="defaultGroup" value="#{businessPartnerGroupController.mainBusinessPartnerGroupDTO.defaultGroup}"/>
+				<p:message for="defaultGroup"/>	
+				<p:outputLabel value="Active: " for="isActive"/>
+				<p:selectBooleanCheckbox id="isActive" value="#{businessPartnerGroupController.mainBusinessPartnerGroupDTO.isActive}"/>
+				<p:message for="isActive"/>			
 			</p:panelGrid>
 			<div align="center">
 				<p:commandButton value="Update" id="updateCommandButton" update=":centerContentPanel" 

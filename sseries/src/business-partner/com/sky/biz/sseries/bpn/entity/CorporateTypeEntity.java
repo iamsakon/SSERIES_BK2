@@ -19,10 +19,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import com.sky.biz.sseries.entity.AbstractEntity; 
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@Table(name = "bpn_partner_category")
-@SequenceGenerator(name = "seq_bpn_partner_category", sequenceName = "seq_bpn_partner_category")
+@Table(name = "bpn_corporate_type")
+@SequenceGenerator(name = "seq_bpn_corporate_type", sequenceName = "seq_bpn_corporate_type")
 @Entity
-public class PartnerCategoryEntity extends AbstractEntity {
+public class CorporateTypeEntity extends AbstractEntity {
 	@Column(name = "is_active")
 	private Boolean isActive;
 	@Column(name = "name")
@@ -33,6 +33,13 @@ public class PartnerCategoryEntity extends AbstractEntity {
 	@Column(name = "id") 
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
+	public Boolean getIsActive() {
+		return this.isActive;
+	}
+	public void setIsActive(Boolean isActive) { 
+		this.isActive = isActive;
+	}
+	
 	public String getName() {
 		return this.name;
 	}
@@ -52,11 +59,5 @@ public class PartnerCategoryEntity extends AbstractEntity {
 	}
 	public void setId(Long id) { 
 		this.id = id;
-	}
-	public Boolean getIsActive() {
-		return isActive;
-	}
-	public void setIsActive(Boolean isActive) {
-		this.isActive = isActive;
 	}
 }

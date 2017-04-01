@@ -12,4 +12,6 @@ public class BpnService {
 	protected BusinessPartnerGroupRepository businessPartnerGroupRepository;
 	@Autowired
 	protected PartnerCategoryRepository partnerCategoryRepository;
+	@Autowired
+	protected CorporateTypeRepository corporateTypeRepository;
 } 

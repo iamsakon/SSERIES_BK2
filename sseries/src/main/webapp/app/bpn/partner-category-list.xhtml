@@ -16,6 +16,13 @@
 				<p:outputLabel value="Description:" for="description"/>
 				<p:inputText id="description" value="#{partnerCategoryController.criteriaPartnerCategoryDTO.description}"/>
 				<p:message for="description" />
+				<p:outputLabel value="Active: " for="isActive"/>
+				<p:selectOneButton id="isActive" value="#{partnerCategoryController.criteriaPartnerCategoryDTO.isActive}"> 
+					<f:selectItem itemLabel="ALL" itemValue="#{null}" /> 
+					<f:selectItem itemLabel="Yes" itemValue="#{true}" />
+					<f:selectItem itemLabel="No" itemValue="#{false}" />  
+				</p:selectOneButton>
+				<p:message for="isActive" />
 			</p:panelGrid>
 			<div align="center">
 				<p:commandButton value="Search" id="searchButton" update=":centerContentPanel" actionListener="#{partnerCategoryController.searchAction}" styleClass="ui-priority-primary" style="width: 20%" icon="ui-icon-disk" />
@@ -35,6 +42,9 @@
 			</p:column>
 			<p:column headerText="Description">
 				<h:outputText value="#{partnerCategory.description}" />
+			</p:column>
+			<p:column headerText="Active">
+				<p:selectBooleanCheckbox value="#{partnerCategory.isActive}" disabled="true"/>
 			</p:column>
 			<p:column style="width:32px;text-align: center" headerText="View">
 				<p:commandButton update=":centerContentPanel" actionListener="#{partnerCategoryController.viewAction}" styleClass="ui-priority-primary" icon="ui-icon-search" title="View"/>				

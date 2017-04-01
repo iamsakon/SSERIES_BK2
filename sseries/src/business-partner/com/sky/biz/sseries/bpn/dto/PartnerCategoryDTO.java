@@ -8,6 +8,7 @@ import com.sky.biz.sseries.dto.AbstractDTO;
 @SuppressWarnings("serial")
 public class PartnerCategoryDTO extends AbstractDTO {
 
+	public Boolean isActive;
 	
 	public String name;
 	
@@ -26,6 +27,12 @@ public class PartnerCategoryDTO extends AbstractDTO {
 	}
 	public void setDescription(String description) { 
 		this.description = description;
+	}
+	public Boolean getIsActive() {
+		return isActive;
+	}
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
 	}
 
 }

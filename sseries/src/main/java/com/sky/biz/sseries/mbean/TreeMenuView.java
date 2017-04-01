@@ -49,6 +49,7 @@ public class TreeMenuView {
 		
 		TreeNode node50 = new DefaultTreeNode(new MenuItemDto("Business Partner Group","app/bpn/business-partner-group"),node5);
 		TreeNode node51 = new DefaultTreeNode(new MenuItemDto("Partner Category","app/bpn/partner-category"),node5);
+		TreeNode node52 = new DefaultTreeNode(new MenuItemDto("Corporate type","app/bpn/corporate-type"),node5);
 		
 
 		node1.getChildren().add(new DefaultTreeNode(new MenuItemDto("Node 1.1","")));

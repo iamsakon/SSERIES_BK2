@@ -15,6 +15,8 @@
 				<p:outputLabel value="#{businessPartnerGroupController.selectedBusinessPartnerGroupDTO.description}"/>
 				<p:outputLabel value="Default Group: " />
 				<p:selectBooleanCheckbox value="#{businessPartnerGroupController.selectedBusinessPartnerGroupDTO.defaultGroup}" disabled="true"/>
+				<p:outputLabel value="Active: " />
+				<p:selectBooleanCheckbox value="#{businessPartnerGroupController.selectedBusinessPartnerGroupDTO.isActive}" disabled="true"/>
 			</h:panelGrid>
 		</p:panel>
 	</h:form>

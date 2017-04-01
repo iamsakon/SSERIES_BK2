@@ -31,8 +31,11 @@ public class BusinessPartnerGroupEntity extends AbstractEntity {
 	private Boolean defaultGroup;
 	@Column(name = "description")
 	private String description;
-	@Column(name = "name")
+	@Column(name = "name")	
 	private String name;
+	@Column(name = "is_active")
+	private Boolean isActive;
+	
 	public Long getId() {
 		return this.id;
 	}
@@ -59,5 +62,11 @@ public class BusinessPartnerGroupEntity extends AbstractEntity {
 	}
 	public void setName(String name) { 
 		this.name = name;
+	}
+	public Boolean getIsActive() {
+		return isActive;
+	}
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
 	}
 }

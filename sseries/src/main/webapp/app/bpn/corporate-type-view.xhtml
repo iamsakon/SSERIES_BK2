@@ -4,18 +4,17 @@
  xmlns:f="http://java.sun.com/jsf/core"
  xmlns:p="http://primefaces.org/ui">
 	<div class="ui-fluid">
-	<h:form id="PartnerCategoryViewForm">
+	<h:form id="CorporateTypeViewForm">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-		<p:panel header=" Partner Category">
+		<p:panel header=" Corporate Type">
 			<p:growl id="growl" life="10000" />
 			<p:panelGrid columns="2" columnClasses="ui-grid-col-3,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
-	
 				<p:outputLabel value="Name:"/>
-				<p:outputLabel value="#{partnerCategoryController.selectedPartnerCategoryDTO.name}"/>
+				<p:outputLabel value="#{corporateTypeController.selectedCorporateTypeDTO.name}"/>
 				<p:outputLabel value="Description:"/>
-				<p:outputLabel value="#{partnerCategoryController.selectedPartnerCategoryDTO.description}"/>
+				<p:outputLabel value="#{corporateTypeController.selectedCorporateTypeDTO.description}"/>
 				<p:outputLabel value="Active: " />
-				<p:selectBooleanCheckbox value="#{partnerCategoryController.selectedPartnerCategoryDTO.isActive}" disabled="true"/>
+				<p:selectBooleanCheckbox value="#{corporateTypeController.selectedCorporateTypeDTO.isActive}" disabled="true"/>
 			</p:panelGrid>
 		</p:panel>
 	</h:form>

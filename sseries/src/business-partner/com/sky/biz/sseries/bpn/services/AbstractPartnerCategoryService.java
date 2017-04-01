@@ -43,8 +43,6 @@ public class AbstractPartnerCategoryService extends BpnService implements ISSeri
 
 		entity.setCreatedDate(Calendar.getInstance());
 
-		entity.setActive(true);
-
 		entity.setVersion(0);
 
 		entity.setCompCode("FCNF");

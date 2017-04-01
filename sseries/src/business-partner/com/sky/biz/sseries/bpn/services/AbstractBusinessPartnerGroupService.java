@@ -40,7 +40,6 @@ public class AbstractBusinessPartnerGroupService extends BpnService implements I
 		BusinessPartnerGroupEntity entity = this.buildBusinessPartnerGroupEntity(dto);
 		entity.setCreatedBy(-9999L);
 		entity.setCreatedDate(Calendar.getInstance());
-		entity.setActive(true);
 		entity.setVersion(0);
 		entity.setCompCode("FCNF");
 		entity =  businessPartnerGroupRepository.save(entity);

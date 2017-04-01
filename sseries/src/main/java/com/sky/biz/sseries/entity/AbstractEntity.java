@@ -48,9 +48,9 @@ public class AbstractEntity {
 	/**
 	 * Whether this entity is active or not
 	 */
-	@Column(name = "is_active",nullable = false)
+	/*@Column(name = "is_active",nullable = false)
 	private boolean isActive;
-	
+	*/
 	@Column(name="mark_delete",nullable = false)
 	private boolean markDelete;
 
@@ -95,12 +95,12 @@ public class AbstractEntity {
 	public void setUpdatedBy(Long updatedBy) {
 		this.updatedBy = updatedBy;
 	}
-	public boolean isActive() {
+	/*public boolean isActive() {
 		return isActive;
 	}
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
-	}
+	}*/
 	public int getVersion() {
 		return version;
 	}
