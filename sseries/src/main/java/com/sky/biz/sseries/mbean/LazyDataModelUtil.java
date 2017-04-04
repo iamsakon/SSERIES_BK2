@@ -68,11 +68,16 @@ public class LazyDataModelUtil<T> extends LazyDataModel<T> {
     @Override
     public List<T> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String,Object> filters) {
         List<T> data = new ArrayList<T>();
-        
-        PageDTOUtil<T> pageDTO = service.loadData(first, pageSize,criteriaMap);
+        int page = 0;
+        if(first > 0)
+        	page = first/pageSize;
+        PageDTOUtil<T> pageDTO = service.loadData(page, pageSize,criteriaMap);
         data = pageDTO.getContents();
         setWrappedData(data);
-        this.setRowCount(data.size());
+        this.setRowCount((int)pageDTO.getTotalElements());
+      //paginate
+//        if(data.size() > pageSize)
+//        	data.subList(first,first + pageSize);
         return data;
     }
     
