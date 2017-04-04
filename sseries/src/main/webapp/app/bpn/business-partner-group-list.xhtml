@@ -43,9 +43,17 @@
 	<h:form id="BusinessPartnerGroupListForm">
 		<p:growl id="growl" life="10000" />
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
-		<p:dataTable var="businessPartnerGroup" value="#{businessPartnerGroupController.lazyData}" paginator="true" rows="10" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{businessPartnerGroupController.selectedBusinessPartnerGroupDTO}" id="BusinessPartnerGroupTable" lazy="true">
+		<p:dataTable var="businessPartnerGroup" value="#{businessPartnerGroupController.lazyData}" 
+			paginator="true" rows="10" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
+			rowsPerPageTemplate="10,20,30" selectionMode="single" 
+			selection="#{businessPartnerGroupController.selectedBusinessPartnerGroupDTO}" 
+			id="BusinessPartnerGroupTable" lazy="true"
+			rowIndexVar="rowIndex" widgetVar="dataTableWidget">
 			<p:ajax event="rowSelect" listener="#{businessPartnerGroupController.onRowSelect}"/>
-	
+			
+			<p:column headerText="No">
+				#{(rowIndex + (businessPartnerGroupController.lazyData.pageSize ) * ( (dataTableWidget.paginator.page + 1) - 1)) + 1 }
+			</p:column>
 			<p:column headerText="Name">
 				<h:outputText value="#{businessPartnerGroup.name}" />
 			</p:column>

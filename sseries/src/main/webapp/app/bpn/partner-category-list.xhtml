@@ -34,9 +34,15 @@
 	<h:form id="PartnerCategoryListForm">
 		<p:growl id="growl" life="10000" />
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
-		<p:dataTable var="partnerCategory" value="#{partnerCategoryController.lazyData}" paginator="true" rows="10" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{partnerCategoryController.selectedPartnerCategoryDTO}" id="PartnerCategoryTable" lazy="true">
+		<p:dataTable var="partnerCategory" value="#{partnerCategoryController.lazyData}" 
+			paginator="true" rows="10" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
+			rowsPerPageTemplate="10,20,30" selectionMode="single" selection="#{partnerCategoryController.selectedPartnerCategoryDTO}" 
+			id="PartnerCategoryTable" lazy="true" rowIndexVar="rowIndex" widgetVar="dataTableWidget">
 			<p:ajax event="rowSelect" listener="#{partnerCategoryController.onRowSelect}"/>
-	
+			
+			<p:column headerText="No">
+				#{(rowIndex + (partnerCategoryController.lazyData.pageSize ) * ( (dataTableWidget.paginator.page + 1) - 1)) + 1 }
+			</p:column>
 			<p:column headerText="Name">
 				<h:outputText value="#{partnerCategory.name}" />
 			</p:column>
