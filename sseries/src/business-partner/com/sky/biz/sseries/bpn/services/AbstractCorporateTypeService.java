@@ -59,6 +59,8 @@ public class AbstractCorporateTypeService extends BpnService implements ISSeries
 		entity.setId(dto.getId());
 
 		entity.setUpdatedBy(-9999L);
+		
+		entity.setCompCode("FCNF");
 
 		entity.setUpdatedDate(Calendar.getInstance());
 

@@ -23,15 +23,15 @@ public class AbstractCorporateTypeSpecification{
 				if(dto!=null){
 		
 					if(SpecificationsUtil.isNotEmpty(dto.getIsActive())){
-						p1 = cb.and(cb.equal(root.get("IsActive"),dto.getIsActive()),p1);
+						p1 = cb.and(cb.equal(root.get("isActive"),dto.getIsActive()),p1);
 					}
 		
 					if(SpecificationsUtil.isNotEmpty(dto.getName())){
-						p1 = cb.and(cb.like(root.get("Name"),SpecificationsUtil.getLikePattern(dto.getName(),SpecificationsUtil.LIKE_PATTERN_PARTIAL)),p1);
+						p1 = cb.and(cb.like(root.get("name"),SpecificationsUtil.getLikePattern(dto.getName(),SpecificationsUtil.LIKE_PATTERN_PARTIAL)),p1);
 					}
 		
 					if(SpecificationsUtil.isNotEmpty(dto.getDescription())){
-						p1 = cb.and(cb.like(root.get("Description"),SpecificationsUtil.getLikePattern(dto.getDescription(),SpecificationsUtil.LIKE_PATTERN_PARTIAL)),p1);
+						p1 = cb.and(cb.like(root.get("description"),SpecificationsUtil.getLikePattern(dto.getDescription(),SpecificationsUtil.LIKE_PATTERN_PARTIAL)),p1);
 					}
 		
 				}
