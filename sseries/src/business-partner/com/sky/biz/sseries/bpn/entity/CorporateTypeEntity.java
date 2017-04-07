@@ -23,30 +23,16 @@ import com.sky.biz.sseries.entity.AbstractEntity;
 @SequenceGenerator(name = "seq_bpn_corporate_type", sequenceName = "seq_bpn_corporate_type")
 @Entity
 public class CorporateTypeEntity extends AbstractEntity {
-	@Column(name = "is_active")
-	private Boolean isActive;
-	@Column(name = "name")
-	private String name;
 	@Column(name = "description")
 	private String description;
 	@Id 
 	@Column(name = "id") 
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
-	public Boolean getIsActive() {
-		return this.isActive;
-	}
-	public void setIsActive(Boolean isActive) { 
-		this.isActive = isActive;
-	}
-	
-	public String getName() {
-		return this.name;
-	}
-	public void setName(String name) { 
-		this.name = name;
-	}
-	
+	@Column(name = "is_active")
+	private Boolean isActive;
+	@Column(name = "name")
+	private String name;
 	public String getDescription() {
 		return this.description;
 	}
@@ -59,5 +45,19 @@ public class CorporateTypeEntity extends AbstractEntity {
 	}
 	public void setId(Long id) { 
 		this.id = id;
+	}
+	
+	public Boolean getIsActive() {
+		return this.isActive;
+	}
+	public void setIsActive(Boolean isActive) { 
+		this.isActive = isActive;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	public void setName(String name) { 
+		this.name = name;
 	}
 }

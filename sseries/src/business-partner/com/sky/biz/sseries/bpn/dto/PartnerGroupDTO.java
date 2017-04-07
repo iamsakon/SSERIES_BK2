@@ -6,23 +6,18 @@ import java.util.Calendar;
 
 import com.sky.biz.sseries.dto.AbstractDTO; 
 @SuppressWarnings("serial")
-public class PartnerCategoryDTO extends AbstractDTO {
+public class PartnerGroupDTO extends AbstractDTO {
 
-	
-	public String description;
 	
 	public Boolean isActive;
 	
-	public String name;
-
-
-	public String getDescription() {
-		return this.description;
-	}
-	public void setDescription(String description) { 
-		this.description = description;
-	}
+	public Boolean defaultGroup;
 	
+	public String name;
+	
+	public String description;
+
+
 	public Boolean getIsActive() {
 		return this.isActive;
 	}
@@ -30,11 +25,25 @@ public class PartnerCategoryDTO extends AbstractDTO {
 		this.isActive = isActive;
 	}
 	
+	public Boolean getDefaultGroup() {
+		return this.defaultGroup;
+	}
+	public void setDefaultGroup(Boolean defaultGroup) { 
+		this.defaultGroup = defaultGroup;
+	}
+	
 	public String getName() {
 		return this.name;
 	}
 	public void setName(String name) { 
 		this.name = name;
+	}
+	
+	public String getDescription() {
+		return this.description;
+	}
+	public void setDescription(String description) { 
+		this.description = description;
 	}
 
 }

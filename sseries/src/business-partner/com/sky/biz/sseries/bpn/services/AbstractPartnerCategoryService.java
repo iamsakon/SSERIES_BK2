@@ -1,5 +1,4 @@
 package com.sky.biz.sseries.bpn.services;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import com.sky.biz.sseries.services.ISSeriesServices;
@@ -61,6 +60,8 @@ public class AbstractPartnerCategoryService extends BpnService implements ISSeri
 
 		entity.setUpdatedBy(-9999L);
 
+		entity.setCompCode("FCNF");
+
 		entity.setUpdatedDate(Calendar.getInstance());
 
 		entity =  partnerCategoryRepository.save(entity);
@@ -85,9 +86,10 @@ public class AbstractPartnerCategoryService extends BpnService implements ISSeri
 			return null;
 		PartnerCategoryDTO dto = null;
 		dto = new PartnerCategoryDTO();
-		dto.setName(entity.getName());
 		dto.setDescription(entity.getDescription());
 		dto.setId(entity.getId());
+		dto.setIsActive(entity.getIsActive());
+		dto.setName(entity.getName());
 		EntityDtoUtil.getAbstractDTO(entity,dto);
 		return dto;
 
@@ -110,9 +112,10 @@ public class AbstractPartnerCategoryService extends BpnService implements ISSeri
 	}
 	public PartnerCategoryEntity buildPartnerCategoryEntity(PartnerCategoryDTO dto) {
 		PartnerCategoryEntity entity = (PartnerCategoryEntity)DtoEntityUtil.initEntity(new PartnerCategoryEntity());
-		entity.setName(dto.getName());
 		entity.setDescription(dto.getDescription());
 		
+		entity.setIsActive(dto.getIsActive());
+		entity.setName(dto.getName());
 		return entity;
 	}
 }

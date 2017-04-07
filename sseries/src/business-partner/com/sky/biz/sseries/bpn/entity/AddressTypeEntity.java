@@ -19,20 +19,43 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import com.sky.biz.sseries.entity.AbstractEntity; 
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@Table(name = "bpn_partner_category")
-@SequenceGenerator(name = "seq_bpn_partner_category", sequenceName = "seq_bpn_partner_category")
+@Table(name = "bpn_address_type")
+@SequenceGenerator(name = "seq_bpn_address_type", sequenceName = "seq_bpn_address_type")
 @Entity
-public class PartnerCategoryEntity extends AbstractEntity {
+public class AddressTypeEntity extends AbstractEntity {
+	@Column(name = "is_active")
+	private Boolean isActive;
+	@Column(name = "code")
+	private String code;
+	@Column(name = "name")
+	private String name;
 	@Column(name = "description")
 	private String description;
 	@Id 
 	@Column(name = "id") 
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
-	@Column(name = "is_active")
-	private Boolean isActive;
-	@Column(name = "name")
-	private String name;
+	public Boolean getIsActive() {
+		return this.isActive;
+	}
+	public void setIsActive(Boolean isActive) { 
+		this.isActive = isActive;
+	}
+	
+	public String getCode() {
+		return this.code;
+	}
+	public void setCode(String code) { 
+		this.code = code;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	public void setName(String name) { 
+		this.name = name;
+	}
+	
 	public String getDescription() {
 		return this.description;
 	}
@@ -45,19 +68,5 @@ public class PartnerCategoryEntity extends AbstractEntity {
 	}
 	public void setId(Long id) { 
 		this.id = id;
-	}
-	
-	public Boolean getIsActive() {
-		return this.isActive;
-	}
-	public void setIsActive(Boolean isActive) { 
-		this.isActive = isActive;
-	}
-	
-	public String getName() {
-		return this.name;
-	}
-	public void setName(String name) { 
-		this.name = name;
 	}
 }

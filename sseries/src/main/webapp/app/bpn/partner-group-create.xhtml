@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:p="http://primefaces.org/ui">
+	<div class="ui-fluid">
+	<h:form id="PartnerGroupModifyForm">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<p:panel header=" Partner Group">
+			<p:growl id="growl" life="10000" />
+			<p:panelGrid columns="3" columnClasses="ui-grid-col-3,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
+	
+				<p:outputLabel value="Is Active: " for="isActive"/>
+				<p:selectBooleanCheckbox id="isActive" value="#{partnerGroupController.mainPartnerGroupDTO.isActive}"/>
+				<p:message for="isActive"/>
+				<p:outputLabel value="Default Group: " for="defaultGroup"/>
+				<p:selectBooleanCheckbox id="defaultGroup" value="#{partnerGroupController.mainPartnerGroupDTO.defaultGroup}"/>
+				<p:message for="defaultGroup"/>
+				<p:outputLabel value="Name:" for="name"/>
+				<p:inputText id="name" value="#{partnerGroupController.mainPartnerGroupDTO.name}"/>
+				<p:message for="name" />
+				<p:outputLabel value="Description:" for="description"/>
+				<p:inputText id="description" value="#{partnerGroupController.mainPartnerGroupDTO.description}"/>
+				<p:message for="description" />
+			</p:panelGrid>
+			<div align="center">
+				<p:commandButton value="Save" id="ajax" update=":centerContentPanel" disabled="#{partnerGroupController.disabledSaveEvent}" actionListener="#{partnerGroupController.saveAction}" styleClass="ui-priority-primary" style="width: 20%" icon="ui-icon-disk"/>
+				<p:commandButton value="Save-Continue" id="ajax2" update="growl" disabled="#{partnerGroupController.disabledSaveEvent}" actionListener="#{partnerGroupController.saveAction2}" styleClass="ui-priority-primary" style="width: 20%" icon="ui-icon-disk"/>
+			</div>
+		</p:panel>
+	</h:form>
+	</div>
+</ui:composition>

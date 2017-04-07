@@ -59,7 +59,7 @@ public class AbstractCorporateTypeService extends BpnService implements ISSeries
 		entity.setId(dto.getId());
 
 		entity.setUpdatedBy(-9999L);
-		
+
 		entity.setCompCode("FCNF");
 
 		entity.setUpdatedDate(Calendar.getInstance());
@@ -86,10 +86,10 @@ public class AbstractCorporateTypeService extends BpnService implements ISSeries
 			return null;
 		CorporateTypeDTO dto = null;
 		dto = new CorporateTypeDTO();
-		dto.setIsActive(entity.getIsActive());
-		dto.setName(entity.getName());
 		dto.setDescription(entity.getDescription());
 		dto.setId(entity.getId());
+		dto.setIsActive(entity.getIsActive());
+		dto.setName(entity.getName());
 		EntityDtoUtil.getAbstractDTO(entity,dto);
 		return dto;
 
@@ -112,10 +112,10 @@ public class AbstractCorporateTypeService extends BpnService implements ISSeries
 	}
 	public CorporateTypeEntity buildCorporateTypeEntity(CorporateTypeDTO dto) {
 		CorporateTypeEntity entity = (CorporateTypeEntity)DtoEntityUtil.initEntity(new CorporateTypeEntity());
-		entity.setIsActive(dto.getIsActive());
-		entity.setName(dto.getName());
 		entity.setDescription(dto.getDescription());
 		
+		entity.setIsActive(dto.getIsActive());
+		entity.setName(dto.getName());
 		return entity;
 	}
 }

@@ -53,6 +53,19 @@ public class AbstractPartnerCategoryController extends AbstractController implem
 		}
 	}
 
+	public void viewAction(ActionEvent actionEvent){
+		try{
+			if(this.selectedPartnerCategoryDTO == null || this.selectedPartnerCategoryDTO.getId() == null){
+				JsfUtil.addWarningMessage("Please select at least one item");
+			}else{
+				this.setCurrentSubView(this.readView);
+			}
+		}catch(Exception ex){
+			JsfUtil.addErrorMessage(ex, "SSeries Error Please Contact admin");
+			ex.printStackTrace();
+		}
+	}
+
 	public void newAction(ActionEvent actionEvent) {
 		try{
 			this.mainPartnerCategoryDTO = new PartnerCategoryDTO();
@@ -116,6 +129,31 @@ public class AbstractPartnerCategoryController extends AbstractController implem
 	public void resetAction(ActionEvent actionEvent){
 		this.criteriaPartnerCategoryDTO = new PartnerCategoryDTO();
 		this.lazyData.setCriteriaMap(null);
+
+	}
+
+	public void setDeleteAction(PartnerCategoryDTO partnerCategory){
+		try{
+			this.selectedPartnerCategoryDTO = partnerCategory;
+			if(this.selectedPartnerCategoryDTO == null || this.selectedPartnerCategoryDTO.getId() == null){
+				JsfUtil.addWarningMessage("Please select at least one item");
+			}else{
+				partnerCategoryServiceImpl.delete(this.selectedPartnerCategoryDTO);
+				this.selectedPartnerCategoryDTO = this.mainPartnerCategoryDTO;
+				this.mainPartnerCategoryDTO = new PartnerCategoryDTO();
+				this.setCurrentSubView(this.listView);
+				JsfUtil.addSuccessMessage(" Partner Category was deleted already!!");
+			}
+		}catch(Exception ex){
+			JsfUtil.addErrorMessage(ex, "SSeries Error Please Contact admin");
+			ex.printStackTrace();
+		}
+
+	}
+
+	public void setViewAction(PartnerCategoryDTO partnerCategory){
+		this.selectedPartnerCategoryDTO = partnerCategory;
+		this.setCurrentSubView(this.readView);
 
 	}
 

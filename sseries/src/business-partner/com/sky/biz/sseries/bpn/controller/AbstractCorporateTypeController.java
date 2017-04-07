@@ -52,12 +52,12 @@ public class AbstractCorporateTypeController extends AbstractController implemen
 			ex.printStackTrace();
 		}
 	}
-	
+
 	public void viewAction(ActionEvent actionEvent){
 		try{
 			if(this.selectedCorporateTypeDTO == null || this.selectedCorporateTypeDTO.getId() == null){
 				JsfUtil.addWarningMessage("Please select at least one item");
-			}else{				
+			}else{
 				this.setCurrentSubView(this.readView);
 			}
 		}catch(Exception ex){
@@ -115,7 +115,6 @@ public class AbstractCorporateTypeController extends AbstractController implemen
 		}
 	}
 
-
 	public void searchAction(ActionEvent actionEvent){
 		try{
 			Map<String, Object> map = new HashMap<String, Object>();
@@ -132,8 +131,7 @@ public class AbstractCorporateTypeController extends AbstractController implemen
 		this.lazyData.setCriteriaMap(null);
 
 	}
-	
-	
+
 	public void setDeleteAction(CorporateTypeDTO corporateType){
 		try{
 			this.selectedCorporateTypeDTO = corporateType;
@@ -150,11 +148,13 @@ public class AbstractCorporateTypeController extends AbstractController implemen
 			JsfUtil.addErrorMessage(ex, "SSeries Error Please Contact admin");
 			ex.printStackTrace();
 		}
+
 	}
-	
+
 	public void setViewAction(CorporateTypeDTO corporateType){
-		this.selectedCorporateTypeDTO = corporateType;
-		this.setCurrentSubView(this.readView);
+			this.selectedCorporateTypeDTO = corporateType;
+			this.setCurrentSubView(this.readView);
+
 	}
 
 	public void onRowSelect(SelectEvent event) {

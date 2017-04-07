@@ -9,13 +9,20 @@ import com.sky.biz.sseries.dto.AbstractDTO;
 public class CorporateTypeDTO extends AbstractDTO {
 
 	
+	public String description;
+	
 	public Boolean isActive;
 	
 	public String name;
+
+
+	public String getDescription() {
+		return this.description;
+	}
+	public void setDescription(String description) { 
+		this.description = description;
+	}
 	
-	public String description;
-
-
 	public Boolean getIsActive() {
 		return this.isActive;
 	}
@@ -28,13 +35,6 @@ public class CorporateTypeDTO extends AbstractDTO {
 	}
 	public void setName(String name) { 
 		this.name = name;
-	}
-	
-	public String getDescription() {
-		return this.description;
-	}
-	public void setDescription(String description) { 
-		this.description = description;
 	}
 
 }

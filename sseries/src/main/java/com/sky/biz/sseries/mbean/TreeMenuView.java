@@ -47,9 +47,12 @@ public class TreeMenuView {
 		TreeNode node41 = new DefaultTreeNode(new MenuItemDto("Role","app/usm/role"),node4);
 		TreeNode node42 = new DefaultTreeNode(new MenuItemDto("Privilege","app/usm/privilege"),node4);
 		
-		TreeNode node50 = new DefaultTreeNode(new MenuItemDto("Business Partner Group","app/bpn/business-partner-group"),node5);
+//		TreeNode node50 = new DefaultTreeNode(new MenuItemDto("Business Partner Group","app/bpn/business-partner-group"),node5);
+		TreeNode node50 = new DefaultTreeNode(new MenuItemDto("Partner Group","app/bpn/partner-group"),node5);
 		TreeNode node51 = new DefaultTreeNode(new MenuItemDto("Partner Category","app/bpn/partner-category"),node5);
-		TreeNode node52 = new DefaultTreeNode(new MenuItemDto("Corporate type","app/bpn/corporate-type"),node5);
+		TreeNode node52 = new DefaultTreeNode(new MenuItemDto("Corporate Type","app/bpn/corporate-type"),node5);
+		TreeNode node53 = new DefaultTreeNode(new MenuItemDto("Address Type","app/bpn/address-type"),node5);
+		TreeNode node54 = new DefaultTreeNode(new MenuItemDto("Title Name","app/bpn/title-name"),node5);
 		
 
 		node1.getChildren().add(new DefaultTreeNode(new MenuItemDto("Node 1.1","")));

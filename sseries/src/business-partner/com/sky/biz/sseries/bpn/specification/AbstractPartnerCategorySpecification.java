@@ -22,14 +22,18 @@ public class AbstractPartnerCategorySpecification{
 					dto = (PartnerCategoryDTO)criteriaMap.get(SpecificationsUtil.DEFAULT_CRITERIA_KEY_MAP);
 				if(dto!=null){
 		
-					if(SpecificationsUtil.isNotEmpty(dto.getName())){
-						p1 = cb.and(cb.like(root.get("name"),SpecificationsUtil.getLikePattern(dto.getName(),SpecificationsUtil.LIKE_PATTERN_PARTIAL)),p1);
-					}
-		
 					if(SpecificationsUtil.isNotEmpty(dto.getDescription())){
 						p1 = cb.and(cb.like(root.get("description"),SpecificationsUtil.getLikePattern(dto.getDescription(),SpecificationsUtil.LIKE_PATTERN_PARTIAL)),p1);
 					}
 		
+		
+					if(SpecificationsUtil.isNotEmpty(dto.getIsActive())){
+						p1 = cb.and(cb.equal(root.get("isActive"),dto.getIsActive()),p1);
+					}
+		
+					if(SpecificationsUtil.isNotEmpty(dto.getName())){
+						p1 = cb.and(cb.like(root.get("name"),SpecificationsUtil.getLikePattern(dto.getName(),SpecificationsUtil.LIKE_PATTERN_PARTIAL)),p1);
+					}
 				}
 				return p1;
 			}
