@@ -1,0 +1,85 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/tags">
+
+<h:head>
+	<style type="text/css">
+.ui-g div {
+	background-color: #ededed;
+	text-align: center;
+	border: 1px solid #fafafa;
+}
+.ui-grid div{
+	background-color: #ededed;
+	text-align: center;
+	border: 1px solid #fafafa;
+}
+</style>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport"
+			content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link rel="shortcut icon" type="image/png"
+			href="#{request.contextPath}/resources/main/images/favicon.png" />
+		<title>SSERIES</title>
+	</f:facet>
+	<h:outputStylesheet name="main/css/showcase.css" />
+	<h:outputStylesheet name="main/css/perfect-scrollbar.css" />
+	<h:outputStylesheet name="main/css/sh.css" />
+	<h:outputScript name="jquery/jquery.js" library="primefaces" />
+	<h:outputScript name="jquery/jquery-plugins.js" library="primefaces" />
+	<h:outputScript name="main/js/perfect-scrollbar.js" />
+	<h:outputScript name="main/js/showcase.js" />
+	<h:outputStylesheet name="grid/grid.css" library="primefaces" />
+	<ui:insert name="head" />
+
+	
+}
+</h:head>
+
+<h3>S-SERIES Layout</h3>
+<div class="ui-grid">
+	<div class="ui-g-12 ui-md-2">
+
+    	<h:form>
+		<p:menu toggleable="true">
+            <p:submenu label="File">
+                <p:menuitem value="Save" url="#" icon="ui-icon-disk" />
+                <p:menuitem value="Update" url="#" icon="ui-icon-arrowrefresh-1-w"/>
+            </p:submenu>
+            <p:submenu label="Edit">
+                <p:menuitem value="Delete" url="#" icon="ui-icon-close"/>
+            </p:submenu>
+            <p:submenu label="View">
+                <p:menuitem value="External" url="http://www.primefaces.org" icon="ui-icon-home"/>
+                <p:menuitem value="Internal"  icon="ui-icon-star"/>
+            </p:submenu>
+        </p:menu>
+		</h:form>
+		
+	</div>
+	<div class="ui-g-12 ui-md-10 ui-g-nopad">
+		<div class="ui-g-12">Bar</div>
+		<div class="ui-g-12 ui-g-nopad">
+			<div class="ui-g">
+				<div id="centerContentPanel" class="ui-g-12 ui-md-4 ui-lg-12">
+					<ui:include src="/#{controlView.currentView}.xhtml" />
+				</div>
+				
+			</div>
+
+			
+
+			
+		</div>
+	</div>
+	<div class="ui-g-12">Footer</div>
+</div>
+
+</html>

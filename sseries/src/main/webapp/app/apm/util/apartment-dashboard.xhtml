@@ -1,0 +1,24 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+	<div class="ui-fluid">
+		<h:form id="apartmentDashboardForm">
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
+			<p:panel header="Manage Building Utility">
+				<p:growl id="growl" life="10000" />
+				<p:panelGrid columns="3"
+					columnClasses="ui-grid-col-3,ui-grid-col-10" layout="grid"
+					styleClass="ui-panelgrid-blank">
+
+				</p:panelGrid>
+				<div align="center"></div>
+			</p:panel>
+		</h:form>
+	</div>
+</ui:composition>

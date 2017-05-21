@@ -31,6 +31,8 @@ public class TreeMenuView {
 		TreeNode node3 = this.getRootTreeNode(root, "Prototype", "");
 		TreeNode node4 = this.getRootTreeNode(root,"User Management","");
 		TreeNode node5 = this.getRootTreeNode(root,"Business Partner","");
+		TreeNode node6 = this.getRootTreeNode(root,"Apartment","");
+		TreeNode node7 = this.getRootTreeNode(root,"S-Studio","");
 		
 		TreeNode node00 = new DefaultTreeNode(new MenuItemDto("General",""), node0);
 		TreeNode node01 = new DefaultTreeNode(new MenuItemDto("Structure",""), node0);
@@ -55,6 +57,28 @@ public class TreeMenuView {
 		TreeNode node54 = new DefaultTreeNode(new MenuItemDto("Title Name","app/bpn/title-name"),node5);
 		
 
+		TreeNode node60 = new DefaultTreeNode(new MenuItemDto("Master Data",""),node6);
+		TreeNode node61 = new DefaultTreeNode(new MenuItemDto("Process",""),node6);
+		TreeNode node62 = new DefaultTreeNode(new MenuItemDto("Report",""),node6);
+		TreeNode node63 = new DefaultTreeNode(new MenuItemDto("Util",""),node6);
+		
+		TreeNode node70 = new DefaultTreeNode(new MenuItemDto("Master Data",""),node7);
+		TreeNode node71 = new DefaultTreeNode(new MenuItemDto("Process",""),node7);
+		TreeNode node72 = new DefaultTreeNode(new MenuItemDto("Report",""),node7);
+		TreeNode node73 = new DefaultTreeNode(new MenuItemDto("Util",""),node7);
+		
+		TreeNode node601 = new DefaultTreeNode(new MenuItemDto("Building","app/apm/master/building"),node60);
+		TreeNode node602 = new DefaultTreeNode(new MenuItemDto("Floor","app/apm/master/floor"),node60);
+		TreeNode node603 = new DefaultTreeNode(new MenuItemDto("Room Type","app/apm/master/room-type"),node60);
+		TreeNode node604 = new DefaultTreeNode(new MenuItemDto("Room","app/apm/master/room"),node60);
+		TreeNode node605 = new DefaultTreeNode(new MenuItemDto("Room Price","app/apm/master/room-price-master"),node60);
+		TreeNode node606 = new DefaultTreeNode(new MenuItemDto("Room Status","app/apm/master/room-status"),node60);
+		TreeNode node607 = new DefaultTreeNode(new MenuItemDto("Meter Type","app/apm/master/meter-type"),node60);
+		TreeNode node608 = new DefaultTreeNode(new MenuItemDto("Manage Building","app/apm/util/manage-building"),node63);
+		
+		TreeNode node701 = new DefaultTreeNode(new MenuItemDto("Product Master","app/ssd/master/product"),node70);
+		TreeNode node702 = new DefaultTreeNode(new MenuItemDto("Module Master","app/ssd/master/module"),node70);
+		
 		node1.getChildren().add(new DefaultTreeNode(new MenuItemDto("Node 1.1","")));
 		node00.getChildren().add(new DefaultTreeNode(new MenuItemDto("Node 0.0.0","app/org/general")));
 		node00.getChildren().add(new DefaultTreeNode(new MenuItemDto("Node 0.0.1","app/org/structure")));

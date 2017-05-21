@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:p="http://primefaces.org/ui">
+	<div class="ui-fluid">
+	<h:form id="manageBuildingForm">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<p:panel header="Manage Building Utility">
+			<p:growl id="growl" life="10000" />
+			<p:panelGrid columns="3" columnClasses="ui-grid-col-3,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">					
+				<p:outputLabel value="รหัสอาคาร:" for="code"/>
+				<p:inputText id="code" required="true" requiredMessage="กรุณาระบุรหัสอาคาร" maxlength="128"
+					value="#{manageBuildingBean.manageBuilding.buildingCode}"/>
+				<p:message for="code" />
+				
+				<p:outputLabel value="ชื่ออาคาร:" for="name"/>
+				<p:inputText id="name" maxlength="128"
+					value="#{manageBuildingBean.manageBuilding.buildingName}"/>
+				<p:message for="name" />
+				
+				<p:outputLabel value="รายละเอียด:" for="description"/>
+				<p:inputText id="description" maxlength="256"
+					value="#{manageBuildingBean.manageBuilding.buildingDescription}"/>
+				<p:message for="description" />
+				
+				<p:outputLabel value="จำนวนชั้น:" for="floorAmount"/>
+				<p:spinner id="floorAmount" min="1" max="50"
+					required="true" requiredMessage="กรุณาระบุชั้นอย่างน้อย 1"
+					value="#{manageBuildingBean.manageBuilding.floorAmount}"/>
+				<p:message for="floorAmount" />
+				
+				<p:outputLabel value="จำนวนห้อง/ชั้น:" for="roomPerFloorAmount"/>
+				<p:spinner id="roomPerFloorAmount" min="1" max="100"
+					required="true" requiredMessage="กรุณาระบุจำนวนห้อง/ชั้นอย่างน้อย 1"
+					value="#{manageBuildingBean.manageBuilding.roomPerFloorAmount}"/>
+				<p:message for="roomPerFloorAmount" />
+				
+				<p:outputLabel value="ประเภทห้อง(เริ่มต้น):" for="roomType"/>
+				<p:selectOneMenu id="roomType" require="true" requiredMessage="กรุณาเลือกประเภทห้องเริ่มต้น" 
+					value="#{manageBuildingBean.manageBuilding.roomType}" converter="#{roomTypeConverter}"
+                    effect="fade" filter="true" filterMatchMode="startsWith">
+                    <f:selectItem itemLabel="กรุณาเลือกประเภทห้องเริ่มต้น" itemValue="#{null}" noSelectionOption="false"/>
+            		<f:selectItems value="#{manageBuildingBean.roomTypeList}" var="roomType" 
+            			itemLabel="#{roomType.code} - #{roomType.name}" itemValue="#{roomType}" />		            
+        		</p:selectOneMenu>
+				<p:message for="roomType" />
+								
+			</p:panelGrid>
+			<div align="center">
+				<p:commandButton value="สร้างข้อมูลอาคาร" id="ajax" 
+					actionListener="#{manageBuildingBean.generateBuilding}" update=":centerContentPanel" 
+					styleClass="ui-priority-primary" style="width: 20%" icon="ui-icon-disk"/>				
+			</div>
+		</p:panel>
+	</h:form>
+	</div>
+</ui:composition>

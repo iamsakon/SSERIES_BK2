@@ -30,6 +30,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
 		<!-- Spring security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -90,14 +95,21 @@
 			<artifactId>postgresql</artifactId>
 			<version>${postgresql.version}</version>
 		</dependency>
+		<!-- BONECP -->
 		<dependency>
-
+			<groupId>com.jolbox</groupId>
+			<artifactId>bonecp</artifactId>
+			<version>0.8.0.RELEASE</version>
+		</dependency>
+		<dependency>
 			<groupId>org.modelmapper</groupId>
-
 			<artifactId>modelmapper</artifactId>
-
 			<version>0.7.6</version>
-
+		</dependency>
+		<dependency>
+			<groupId>com.ocpsoft</groupId>
+			<artifactId>prettyfaces-jsf2</artifactId>
+			<version>3.3.3</version>
 		</dependency>
 	</dependencies>
 	<repositories>

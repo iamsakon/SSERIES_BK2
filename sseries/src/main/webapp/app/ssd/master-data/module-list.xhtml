@@ -1,0 +1,92 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:p="http://primefaces.org/ui">
+	<div class="ui-fluid">
+	<h:form id="ModuleCriteriaForm">
+		<p:growl id="growl" life="10000" />
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+		<p:panel header=" Module" toggleable="true" toggleSpeed="500" closeSpeed="500" >
+			<p:panelGrid columns="3" columnClasses="ui-grid-col-3,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
+	
+				<p:outputLabel value="Code:" for="code"/>
+				<p:inputText id="code" value="#{moduleController.criteriaModuleDTO.code}"/>
+				<p:message for="code" />
+				<p:outputLabel value="Description:" for="description"/>
+				<p:inputText id="description" value="#{moduleController.criteriaModuleDTO.description}"/>
+				<p:message for="description" />
+				<p:outputLabel value="Is Active: " for="isActive"/>
+				<p:selectOneButton id="isActive" value="#{moduleController.criteriaModuleDTO.isActive}"> 
+					<f:selectItem itemLabel="ALL" itemValue="#{null}" /> 
+					<f:selectItem itemLabel="Yes" itemValue="#{true}" />
+					<f:selectItem itemLabel="No" itemValue="#{false}" />  
+				</p:selectOneButton>
+				<p:message for="isActive" />
+				<p:outputLabel value="Name:" for="name"/>
+				<p:inputText id="name" value="#{moduleController.criteriaModuleDTO.name}"/>
+				<p:message for="name" />
+				<p:outputLabel value="Sort Key:" for="sortKey"/>
+				<p:inputNumber id="sortKey" value="#{moduleController.mainModuleDTO.sortKey}"/>
+				<p:message for="sortKey" />
+			</p:panelGrid>
+			<div align="center">
+				<p:commandButton value="Search" id="searchButton" update=":centerContentPanel" actionListener="#{moduleController.searchAction}" styleClass="ui-priority-primary" style="width: 20%" icon="ui-icon-disk" />
+				<p:commandButton value="Reset" id="resetButton" update=":centerContentPanel" actionListener="#{moduleController.resetAction}" styleClass="ui-priority-primary" style="width: 20%" icon="ui-icon-disk" />
+			</div>
+		</p:panel>
+	</h:form>
+		<br/>
+	<h:form id="ModuleListForm">
+		<p:growl id="growl" life="10000" />
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+		<p:dataTable var="module" value="#{moduleController.lazyData}" 
+			paginator="true" rows="10" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
+			rowsPerPageTemplate="10,20,30" selectionMode="single" 
+			selection="#{moduleController.selectedModuleDTO}"
+			id="ModuleTable" lazy="true"
+			rowIndexVar="rowIndex" widgetVar="dataTableWidget">
+			<p:ajax event="rowSelect" listener="#{moduleController.onRowSelect}"/>
+			<p:column headerText="No">
+				#{(rowIndex + (moduleController.lazyData.pageSize ) * ( (dataTableWidget.paginator.page + 1) - 1)) + 1 }
+			</p:column>
+	
+			<p:column headerText="Code">
+				<h:outputText value="#{module.code}" />
+			</p:column>
+			<p:column headerText="Description">
+				<h:outputText value="#{module.description}" />
+			</p:column>
+			<p:column headerText="Is Active">
+				<p:selectBooleanCheckbox value="#{module.isActive}" disabled="true"/>
+			</p:column>
+			<p:column headerText="Name">
+				<h:outputText value="#{module.name}" />
+			</p:column>
+			<p:column headerText="Sort Key">
+				<h:outputText value="#{module.sortKey}" />
+			</p:column>
+	
+			<p:column headerText="product">
+				<h:outputText value="#{module.product.id}" />
+			</p:column>
+			<p:column style="width:32px;text-align: center" headerText="View">
+				<p:commandButton update=":centerContentPanel"
+					styleClass="ui-priority-primary" icon="ui-icon-search" title="View">
+					<f:setPropertyActionListener value="#{module}" target="#{moduleController.viewAction}" />
+				</p:commandButton>
+			</p:column>
+			<p:column style="width:32px;text-align: center" headerText="Delete">
+				<p:commandButton update=":centerContentPanel" styleClass="ui-priority-primary" icon="ui-icon-search" title="Delete">
+					<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+					<f:setPropertyActionListener value="#{module}" target="#{moduleController.deleteAction}" />
+				</p:commandButton>
+			</p:column>
+		</p:dataTable>
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+			<p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+			<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		</p:confirmDialog>
+	</h:form>
+	</div>
+</ui:composition>

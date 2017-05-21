@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<beanclass =
+		org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean
+		id="entityManagerFactory">
+		<property name="persistenceUnitManager" ref="pum" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="databasePlatform" value="${database.dialect}" />
+			</bean>
+		</property>
+		<property name="jpaPropertyMap">
+			<map>
+				<entry key="hibernate.multi_tenant_connection_provider"
+					value-ref="multitenancyConnectionProvider" />
+				<entry key="hibernate.tenant_identifier_resolver" value-ref="tenantResolver" />
+				<entry key="hibernate.multiTenancy" value="DATABASE" />
+			</map>
+		</property>
+	</bean>
+</beans>

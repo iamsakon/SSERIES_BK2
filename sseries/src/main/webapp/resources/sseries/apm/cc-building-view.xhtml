@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<composite:interface>
+	<composite:attribute name="buildingVO" />
+	<composite:attribute name="column" />
+	<composite:attribute name="columnClasses" />
+	<composite:attribute name="styleClass" />
+</composite:interface>
+
+<composite:implementation>
+	<p:panelGrid columns="#{cc.attrs.column}" columnClasses="#{cc.attrs.columnClasses}"
+		layout="grid" styleClass="#{cc.attrs.styleClass}">
+		<p:outputLabel value="Code:" />
+		<p:outputLabel id="code" value="#{cc.attrs.buildingVO.code}" />
+
+		<p:outputLabel value="Name:" />
+		<p:outputLabel id="name" value="#{cc.attrs.buildingVO.name}" />
+
+		<p:outputLabel value="Description:" />
+		<p:outputLabel id="description"
+			value="#{cc.attrs.buildingVO.description}" />
+
+		<p:outputLabel value="Active: " />
+		<p:selectBooleanCheckbox id="isActive"
+			value="#{cc.attrs.buildingVO.isActive}" disabled="true" />
+	</p:panelGrid>
+</composite:implementation>
+
+</html>

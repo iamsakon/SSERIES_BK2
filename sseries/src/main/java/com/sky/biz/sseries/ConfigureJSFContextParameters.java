@@ -24,7 +24,7 @@ public class ConfigureJSFContextParameters implements ServletContextInitializer 
         servletContext.setInitParameter("facelets.DEVELOPMENT", "true");
         servletContext.setInitParameter(
                 "javax.faces.FACELETS_REFRESH_PERIOD", "1");
-        servletContext.setInitParameter(Constants.ContextParams.THEME, "bootstrap");
+        servletContext.setInitParameter(Constants.ContextParams.THEME, "omega");//bootstrap
         servletContext.setInitParameter(Constants.ContextParams.FONT_AWESOME, "true");
 	}
 

@@ -1,0 +1,95 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:p="http://primefaces.org/ui">
+	<div class="ui-fluid">
+	<h:form id="FloorCriteriaForm">
+		<p:growl id="growl" life="10000" />
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+		<p:panel header=" Floor" toggleable="true" toggleSpeed="500" closeSpeed="500" >
+			<p:panelGrid columns="3" columnClasses="ui-grid-col-3,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
+					
+				<p:outputLabel value="Code:" for="code"/>
+				<p:inputText id="code" value="#{floorController.criteriaFloorDTO.code}" maxlength="128"/>
+				<p:message for="code" />
+				<p:outputLabel value="Name:" for="name"/>
+				<p:inputText id="name" value="#{floorController.criteriaFloorDTO.name}" maxlength="128"/>
+				<p:message for="name" />
+				<p:outputLabel value="Description:" for="description"/>
+				<p:inputText id="description" value="#{floorController.criteriaFloorDTO.description}" maxlength="256"/>
+				<p:message for="description" />
+				<p:outputLabel value="Is Active: " for="isActive"/>
+				<p:selectOneButton id="isActive" value="#{floorController.criteriaFloorDTO.isActive}"> 
+					<f:selectItem itemLabel="ALL" itemValue="#{null}" /> 
+					<f:selectItem itemLabel="Yes" itemValue="#{true}" />
+					<f:selectItem itemLabel="No" itemValue="#{false}" />  
+				</p:selectOneButton>
+				<p:message for="isActive" />
+			</p:panelGrid>
+			<div align="center">
+				<p:commandButton value="Search" id="searchButton" update=":centerContentPanel" actionListener="#{floorController.searchAction}" styleClass="ui-priority-primary" style="width: 20%" icon="ui-icon-disk" />
+				<p:commandButton value="Reset" id="resetButton" update=":centerContentPanel" actionListener="#{floorController.resetAction}" styleClass="ui-priority-primary" style="width: 20%" icon="ui-icon-disk" />
+			</div>
+		</p:panel>
+	</h:form>
+		<br/>
+	<h:form id="FloorListForm">
+		<p:growl id="growl" life="10000" />
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+		<p:dataTable var="floor" value="#{floorController.lazyData}" 
+			paginator="true" rows="10" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
+			rowsPerPageTemplate="10,20,30" selectionMode="single" 
+			selection="#{floorController.selectedFloorDTO}"
+			id="FloorTable" lazy="true"
+			rowIndexVar="rowIndex" widgetVar="dataTableWidget">
+			<p:ajax event="rowSelect" listener="#{floorController.onRowSelect}"/>
+			<p:column headerText="No">
+				#{(rowIndex + (floorController.lazyData.pageSize ) * ( (dataTableWidget.paginator.page + 1) - 1)) + 1 }
+			</p:column>
+				
+			<p:column headerText="Code">
+				<h:outputText value="#{floor.code}" />
+			</p:column>
+			<p:column headerText="Name">
+				<h:outputText value="#{floor.name}" />
+			</p:column>
+			<p:column headerText="Description">
+				<h:outputText value="#{floor.description}" />
+			</p:column>	
+			<p:column headerText="building">
+				<h:outputText value="#{floor.building.code}" />-<h:outputText value="#{floor.building.name}" />
+			</p:column>
+			<p:column headerText="Active" style ="text-align: center">
+				<p:selectBooleanCheckbox value="#{floor.isActive}" disabled="true"/>
+			</p:column>
+			<!--  
+			<p:column style="width:32px;text-align: center" headerText="View">
+				<p:commandButton update=":centerContentPanel"
+					styleClass="ui-priority-primary" icon="ui-icon-search" title="View">
+					<f:setPropertyActionListener value="#{floor}" target="#{floorController.viewAction}" />
+				</p:commandButton>
+			</p:column>
+			<p:column style="width:32px;text-align: center" headerText="Delete">
+				<p:commandButton update=":centerContentPanel" styleClass="ui-priority-primary" icon="ui-icon-search" title="Delete">
+					<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+					<f:setPropertyActionListener value="#{floor}" target="#{floorController.deleteAction}" />
+				</p:commandButton>
+			</p:column>
+			-->
+		</p:dataTable>
+		<p:contextMenu for="FloorTable">
+			<p:menuitem value="New" update=":centerContentPanel" icon="ui-icon-search" actionListener="#{floorController.newAction}"/>
+        	<p:menuitem value="View" update=":centerContentPanel" icon="ui-icon-search" actionListener="#{floorController.viewAction(floor)}"/>
+        	<p:menuitem value="modify" update=":centerContentPanel" icon="ui-icon-search" actionListener="#{floorController.editAction(floor)}"/>
+	        <p:menuitem value="Delete" update=":centerContentPanel" icon="ui-icon-close" actionListener="#{floorController.deleteAction(floor)}">
+	        	<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />	        	
+	        </p:menuitem>
+	    </p:contextMenu>
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+			<p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+			<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		</p:confirmDialog>
+	</h:form>
+	</div>
+</ui:composition>

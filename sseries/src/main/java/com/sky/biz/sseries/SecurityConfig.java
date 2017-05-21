@@ -29,19 +29,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("user").password("password").roles("USER");
     }
 	
-//	 @Override  
-//	    protected void configure(HttpSecurity http) throws Exception {  
-//	        http  
-//	            .authorizeRequests()  
-//	                .antMatchers("/admin/**").hasAuthority("ADMIN")  
-//	                .antMatchers("/user/**").hasAuthority("USER")  
-//	                .anyRequest().authenticated()  
-//	            .and()  
-//	            .formLogin()  
-//	            .and()  
-//	            .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");  
-//	        ;  
-//	    }  
+	 @Override  
+	    protected void configure(HttpSecurity http) throws Exception {  
+	        http  
+	            .authorizeRequests()  
+	                .antMatchers("/admin/**").hasAuthority("ADMIN")  
+	                .antMatchers("/user/**").hasAuthority("USER")  
+	                .anyRequest().authenticated()  
+	            .and()  
+	            .formLogin()  
+	            .and()  
+	            .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");  
+	        ;  
+	    }  
 //	 
 //	 @Override  
 //	    protected void configure(AuthenticationManagerBuilder auth) throws Exception {  

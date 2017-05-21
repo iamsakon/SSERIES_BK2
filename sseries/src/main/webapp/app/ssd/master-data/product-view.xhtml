@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:p="http://primefaces.org/ui">
+	<div class="ui-fluid">
+	<h:form id="RoomStatusViewForm">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<p:panel header=" Room Status">
+			<p:growl id="growl" life="10000" />
+			<p:panelGrid columns="2" columnClasses="ui-grid-col-3,ui-grid-col-10" layout="grid" styleClass="ui-panelgrid-blank">
+	
+				<p:outputLabel value="Code:"/>
+				<p:outputLabel value="#{roomStatusController.selectedRoomStatusDTO.code}"/>
+				<p:outputLabel value="Description:"/>
+				<p:outputLabel value="#{roomStatusController.selectedRoomStatusDTO.description}"/>
+				<p:outputLabel value="Is Active: " />
+				<p:selectBooleanCheckbox value="#{roomStatusController.selectedRoomStatusDTO.isActive}" disabled="true"/>
+				<p:outputLabel value="Name:"/>
+				<p:outputLabel value="#{roomStatusController.selectedRoomStatusDTO.name}"/>
+			</p:panelGrid>
+		</p:panel>
+	</h:form>
+	</div>
+</ui:composition>

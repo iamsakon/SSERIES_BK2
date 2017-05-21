@@ -1,6 +1,7 @@
 package com.sky.biz.sseries.dto;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 public class AbstractDTO implements Serializable{
 
@@ -9,9 +10,19 @@ public class AbstractDTO implements Serializable{
 	 */
 	private static final long serialVersionUID = -2159052830534474685L;
 
-	Long id;
+	private Long id;
 	
-	String compCode;
+	private String compCode;
+	
+	private Calendar createdDate;
+	
+	private Long createdBy;
+	
+	private Calendar updatedDate;
+	
+	private Long updatedBy;
+	
+	private boolean markDelete;
 	
 	public Long getId() {
 		return id;
@@ -52,6 +63,46 @@ public class AbstractDTO implements Serializable{
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public Calendar getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Calendar createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Long getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Long createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Calendar getUpdatedDate() {
+		return updatedDate;
+	}
+
+	public void setUpdatedDate(Calendar updatedDate) {
+		this.updatedDate = updatedDate;
+	}
+
+	public Long getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(Long updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	public boolean isMarkDelete() {
+		return markDelete;
+	}
+
+	public void setMarkDelete(boolean markDelete) {
+		this.markDelete = markDelete;
 	}
 	
 	

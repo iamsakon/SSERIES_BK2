@@ -1,8 +1,10 @@
+
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
+	
 	xmlns:sec="http://www.springframework.org/security/tags">
 <h:head>
 
@@ -72,9 +74,18 @@
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<link rel="shortcut icon" type="image/png"
 			href="#{request.contextPath}/resources/main/images/favicon.png" />
+		<title>SSERIES</title>
+	</f:facet>
+	
+	<f:facet name="middle">
+		
+	</f:facet>
+        
+	<f:facet name="last">
+ 
 	</f:facet>
 
-	<title>PrimeFaces ShowCase</title>
+	
 	<h:outputStylesheet name="main/css/showcase.css" />
 	<h:outputStylesheet name="main/css/perfect-scrollbar.css" />
 	<h:outputStylesheet name="main/css/sh.css" />
@@ -111,9 +122,9 @@
 		header="#{principal.username} #{controlView.sessionId}"
 		resizable="true" closable="true" collapsible="true">
 		<sec:authentication property="principal.username" />
-		<br />
 		<a
-			href="#{facesContext.externalContext.requestContextPath}/j_spring_security_logout">logout</a>
+			href="#{facesContext.externalContext.requestContextPath}/logout">logout</a>
+		
 	</p:layoutUnit>
 	<p:layoutUnit position="west" resizable="true" size="500" minSize="80"
 		maxSize="300" header="Application " collapsible="true">

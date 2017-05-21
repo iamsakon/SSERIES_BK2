@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:p="http://primefaces.org/ui">
+	<h:form>
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		<p:ribbon>
+			<p:tab title=" Room Meter">
+				<p:ribbonGroup label="New">
+					<p:commandButton value="New" icon="ui-ribbonicon-new" update=":centerContentPanel" styleClass="ui-ribbon-bigbutton" disabled="#{roomMeterController.disabledNewEvent}" actionListener="#{roomMeterController.newAction}" />
+					<p:commandButton value="Save" icon="ui-ribbonicon-save"  update=":centerContentPanel"  styleClass="ui-ribbon-bigbutton" disabled="#{roomMeterController.disabledSaveEvent}" actionListener="#{roomMeterController.saveAction}"/>
+				</p:ribbonGroup>
+			<p:ribbonGroup label = "Find">
+					<p:commandButton value="Finding" icon="ui-ribbonicon-find" update=":centerContentPanel" styleClass="ui-ribbon-bigbutton" disabled="#{roomMeterController.disabledFindEvent}" actionListener="#{roomMeterController.findAction}" />
+					<p:commandButton value="View" icon="ui-ribbonicon-find" update=":centerContentPanel" styleClass="ui-ribbon-bigbutton" disabled="#{roomMeterController.disabledFindEvent}" actionListener="#{roomMeterController.viewAction}" />
+				</p:ribbonGroup>
+				<p:ribbonGroup label="Editing">
+					<p:commandButton value="Modify" icon="ui-ribbonicon-save"  update=":centerContentPanel"  styleClass="ui-ribbon-bigbutton" disabled="#{roomMeterController.disabledEditEvent}" actionListener="#{roomMeterController.editAction}"/> 
+				</p:ribbonGroup>
+				<p:ribbonGroup label="Export">
+				</p:ribbonGroup>
+			</p:tab>
+			</p:ribbon>
+			</h:form>
+			<br/>
+			<ui:include src="/#{roomMeterController.currentSubView}.xhtml" />
+</ui:composition>

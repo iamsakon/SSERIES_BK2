@@ -31,6 +31,13 @@ public class SpecificationsUtil {
 		return pattern.toString();
 	}
 	
+	public static boolean isNotEmpty(Double chk){
+		if(chk == null){
+			return false;
+		}else{
+			return true;
+		}
+	}
 	
 	public static boolean isNotEmpty(Boolean chk){
 		if(chk == null){
